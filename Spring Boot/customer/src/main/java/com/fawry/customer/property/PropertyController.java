@@ -17,6 +17,8 @@ public class PropertyController {
 
     @Value("${app.developer}")
     private String developerName;
+    @Value("${external.name}")
+    public String externalConfig;
 
     @GetMapping("/dev-name")
     public String getDeveloperName() {
@@ -26,6 +28,11 @@ public class PropertyController {
     @GetMapping("/{key}")
     public String getPropByKey(@PathVariable String key) {
         return environment.getProperty(key, "Property not found");
+    }
+
+    @GetMapping("/external")
+    public String getExternalConfig() {
+        return externalConfig;
     }
 
 }
