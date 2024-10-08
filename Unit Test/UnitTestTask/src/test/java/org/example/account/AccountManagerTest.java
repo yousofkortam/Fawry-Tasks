@@ -47,6 +47,7 @@ public class AccountManagerTest {
     public void givenCustomerWithCreditAllowedAndExpectedBalanceMoreThanMAXCREDIT_whenWithdraw_thenFailure() {
         Customer customer = new Customer();
         customer.setBalance(50);
+        customer.setCreditAllowed(true);
         AccountManager accountManager = new AccountManagerImpl();
         String result = accountManager.withdraw(customer, 3000);
         Assertions.assertEquals("maximum credit exceeded", result);
@@ -61,7 +62,7 @@ public class AccountManagerTest {
         AccountManager accountManager = new AccountManagerImpl();
         String result = accountManager.withdraw(customer, 1100);
         Assertions.assertEquals("success", result);
-        Assertions.assertEquals(customer.getBalance() - 1100, customer.getBalance());
+        Assertions.assertEquals(-1050, customer.getBalance());
     }
 
     @Test
@@ -70,7 +71,7 @@ public class AccountManagerTest {
         customer.setBalance(50);
         AccountManager accountManager = new AccountManagerImpl();
         String result = accountManager.withdraw(customer, -500);
-        Assertions.assertEquals("amount must be positive", result);
+        Assertions.assertEquals("Amount must be greater than 0", result);
     }
 
 

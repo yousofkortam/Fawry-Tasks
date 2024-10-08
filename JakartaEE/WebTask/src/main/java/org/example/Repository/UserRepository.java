@@ -11,7 +11,7 @@ public class UserRepository {
     static List<User> users = new ArrayList<>();
 
     static  {
-        users.add(new User(1, "John Doe", 30, "john@email.com", "password123"));
+        users.add(new User(1, "Yousof Kortam", 30, "kortam@email.com", "123"));
         users.add(new User(2, "Jane Smith", 25, "jane.smith@example.com", "password456"));
         users.add(new User(3, "Alice Johnson", 28, "alice.johnson@example.com", "password789"));
         users.add(new User(4, "Bob Brown", 32, "bob.brown@example.com", "password101"));
